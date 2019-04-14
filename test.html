@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+    <link rel="stylesheet" href="./ion.rangeSlider.min.css">
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script src="./ion.rangeSlider.js"></script>
+    <script src="./zepto.js"></script>
+</head>
+<body>
+    <div style="width:400px;height: 60px;">
+            <input type="text" class="js-range-slider" name="my_range" value="" />
+    </div>
+    <button onclick="test()">test</button>
+</body>
+<script>
+
+$(".js-range-slider").ionRangeSlider({
+        skin: "big",
+        type: "double",
+        min: 0,
+        max: 1001,
+        from: 200,
+        to: 500,
+        step: 50,
+        onChange:function(data){
+            console.log(data)
+        },
+        prettify:function(n){
+            return n==1001?'1000以上':n
+        }
+    });
+    var my_range = $(".js-range-slider").data("ionRangeSlider");
+    console.log(my_range)
+    function test(){
+        my_range.update({
+            from: 300,
+            to: 400
+        });
+    }
+</script>
+</html>
